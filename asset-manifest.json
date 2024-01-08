@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Holder-hash/react-calculator/static/css/main.750dae56.css",
+    "main.js": "/Holder-hash/react-calculator/static/js/main.b546bd38.js",
+    "static/js/496.d8374b76.chunk.js": "/Holder-hash/react-calculator/static/js/496.d8374b76.chunk.js",
+    "index.html": "/Holder-hash/react-calculator/index.html",
+    "main.750dae56.css.map": "/Holder-hash/react-calculator/static/css/main.750dae56.css.map",
+    "main.b546bd38.js.map": "/Holder-hash/react-calculator/static/js/main.b546bd38.js.map",
+    "496.d8374b76.chunk.js.map": "/Holder-hash/react-calculator/static/js/496.d8374b76.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.750dae56.css",
+    "static/js/main.b546bd38.js"
+  ]
+}
