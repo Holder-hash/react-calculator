@@ -1,0 +1,11 @@
+.calculatorBody {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -45%);
+  width: 500px;
+  height: 700px;
+  background-color: rgb(25, 25, 25);
+  box-shadow: 0 0 5px rgb(29, 68, 146);
+  border-radius: 15px;
+}/*# sourceMappingURL=Calculator.module.css.map */

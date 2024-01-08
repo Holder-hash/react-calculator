@@ -1,8 +1,8 @@
-import './Calculator.css';
+import  styles  from './Calculator.module.css';
 
 const Calculator = () => {
     return (
-        <div>
+        <div className={styles.calculatorBody}>
 
         </div>
     )
