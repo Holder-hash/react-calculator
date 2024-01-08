@@ -1,11 +1,9 @@
 import  styles  from '../Calculator.module.css';
 import { useState } from "react";
 
-const CalcButtons = () => {
+const CalcButtons = (props) => {
 
     const [calculationStr, setCalculation] = useState('');
-    
-    console.log(calculationStr);
 
     let btn = () => {
         let btnArr = []
@@ -23,6 +21,12 @@ const CalcButtons = () => {
         setCalculation('');
     }
 
+    const calc = (calcStr) => {
+        setCalculation(eval(calcStr))
+    }
+
+    props.updateStrValueHandler(calculationStr);
+
     return (
         <div className={styles.calcButtons}>
             <div>
@@ -36,7 +40,7 @@ const CalcButtons = () => {
                 <div>
                     {btn()}
                     <input type="button" value={'0'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
-                    <input type="button" value={'='} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
+                    <input type="button" value={'='} onClick={() => calc(calculationStr)}/>
                 </div>
 
                 <div>

@@ -1,6 +1,7 @@
 import  styles  from '../Calculator.module.css';
 
-const CalcInput = () => {
+const CalcInput = (props) => {
+
     return (
         <div className={styles.calculatorInp}>
             <input
@@ -11,7 +12,9 @@ const CalcInput = () => {
                     if (!key.match(regex) && key !== "Enter") {
                         event.preventDefault();
                     }
-                }} />
+                }} 
+                value={props.calculationStr}
+            />
         </div>
     )
 }
