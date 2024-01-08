@@ -28,4 +28,34 @@
   font-size: 23px;
   color: rgb(112, 129, 165);
   text-align: center;
+}
+
+.calcButtons {
+  position: relative;
+  width: 90%;
+  height: 300px;
+  margin: 0 auto;
+  top: 20%;
+  border-radius: 5px;
+  background-color: rgb(34, 34, 34);
+  box-shadow: 0 0 5px rgb(29, 68, 146);
+}
+.calcButtons input {
+  width: 50px;
+  height: 50px;
+}
+.calcButtons div:nth-child(2) {
+  display: flex;
+}
+.calcButtons div:nth-child(2) div:nth-child(1) {
+  width: 150px;
+}
+.calcButtons div:nth-child(2) div:nth-child(1) input[value="0"] {
+  width: 100px;
+}
+.calcButtons div:nth-child(2) div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 200px;
 }/*# sourceMappingURL=Calculator.module.css.map */
