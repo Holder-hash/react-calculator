@@ -18,7 +18,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build" 
+    "deploy": "gh-pages -d build",
+    "build-prod": "webpack --mode=production"
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +42,9 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "author": "",
   "license": "ISC"

@@ -4,6 +4,7 @@ import { useState } from "react";
 const CalcButtons = (props) => {
 
     const [calculationStr, setCalculation] = useState('');
+    const [bracketCheck, setBracketCheck] = useState(false);
 
     let btn = () => {
         let btnArr = []
@@ -19,10 +20,21 @@ const CalcButtons = (props) => {
 
     const cleanCaclStr = () => {
         setCalculation('');
+        setBracketCheck(false);
     }
 
     const calc = (calcStr) => {
         setCalculation(eval(calcStr))
+    }
+
+    const brackets = () => {
+        if (!bracketCheck) {
+            setCalculation(calculationStr + '(');
+            setBracketCheck(true);
+        } else {
+            setCalculation(calculationStr + ')');
+            setBracketCheck(false);
+        }
     }
 
     props.updateStrValueHandler(calculationStr);
@@ -30,7 +42,7 @@ const CalcButtons = (props) => {
     return (
         <div className={styles.calcButtons}>
             <div>
-                <input type="button" value={'()'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
+                <input type="button" value={'()'} onClick={() => brackets()}/>
                 <input type="button" value={'%'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
                 <input type="button" value={'C'} onClick={() => cleanCaclStr()}/>
                 <input type="button" value={'<'} onClick={() => sliceCaclStr(calculationStr)}/>
