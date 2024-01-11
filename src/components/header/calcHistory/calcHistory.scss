@@ -1,0 +1,19 @@
+@import '../../_storage.scss';
+
+.calc-history__body {
+    position: absolute;
+    top: 65px;
+    right: 70px;
+    width: 500px;
+    height: 300px;
+    z-index: 1;
+    background-color: $body-color-dark1;
+    box-shadow: 0 0 25px $outline-color;
+    border-radius: 0 0 15px 15px;
+    transition: .3s;
+    transform: translateY(-110%);
+}
+
+.calc-history_active {
+    transform: translateY(0);
+}
