@@ -5,6 +5,15 @@ const CalcButtons = (props) => {
 
     const [calculationStr, setCalculation] = useState('');
     const [bracketCheck, setBracketCheck] = useState(false);
+    const [calcHistory, setCalcHistory] = useState({
+        calcStr: [],
+        calcEval: []
+    })
+
+    if (!localStorage.getItem('calcHistory')) {
+        localStorage.setItem('calcHistory', [])
+    }
+    localStorage.setItem('calcHistory', JSON.stringify(calcHistory))
 
     let btn = () => {
         let btnArr = []
@@ -25,6 +34,18 @@ const CalcButtons = (props) => {
 
     const calc = (calcStr) => {
         setCalculation(eval(calcStr))
+
+        if (/[+\-*/]/.test(calculationStr)) {
+
+            setCalcHistory(prev => {
+                return {
+                    ...prev,
+                    calcStr: [...prev.calcStr, calcStr],
+                    calcEval: [...prev.calcEval, eval(calculationStr)]
+                }
+            })
+        }
+        console.log(calcHistory);
     }
 
     const brackets = () => {

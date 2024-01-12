@@ -5,9 +5,11 @@ const CalcHistory = (props) => {
 
     const [calcActive, setCalcActive] = useState(false);
 
+    let storageHistory = JSON.parse(localStorage.getItem('calcHistory'))
+    console.log(storageHistory);
+
     useEffect(() => {
         setCalcActive(props.calcActive)
-        console.log(props.calcActive);
     }, [props.calcActive])
 
     return (
