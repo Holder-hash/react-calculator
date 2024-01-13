@@ -16,10 +16,10 @@
 
     span {
         font-size: 26px;
-        color: rgb(94, 0, 0); 
+        color: rgb(94, 0, 0);
         cursor: pointer;
     }
-
+    
     .calc-history__inner {
         overflow-y: scroll;
         margin: 0 auto;
@@ -36,6 +36,17 @@
             color: $outline-color;
         }
 
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: $body-color-dark2;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $outline-color;
+        border-radius: 25px;
     }
 }
 

@@ -47,9 +47,9 @@ const CalcHistory = (props) => {
 
     return (
         <div className={`calc-history__body ${calcActive ? 'calc-history_active' : ''} `}>
-            <span class="material-symbols-outlined" onClick={() => clearStorageHandler()}>
+            {/* <span class="material-symbols-outlined" onClick={() => clearStorageHandler()}>
                 delete_forever
-            </span>
+            </span> */}
             <div className="calc-history__inner">
                 {calcArr.map(el => { return <p>{el}</p> })}
             </div>
