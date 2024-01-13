@@ -1,26 +1,28 @@
-import  styles  from '../Calculator.module.css';
-import { useState } from "react";
+import styles from '../Calculator.module.css';
+import { useEffect, useState } from "react";
 
 const CalcButtons = (props) => {
 
     const [calculationStr, setCalculation] = useState('');
     const [bracketCheck, setBracketCheck] = useState(false);
-    const [calcHistory, setCalcHistory] = useState({
+    let [calcHistory, setCalcHistory] = useState({
         calcStr: [],
         calcEval: []
-    })
+    });
 
-    if (!localStorage.getItem('calcHistory')) {
-        localStorage.setItem('calcHistory', [])
-    }
-    localStorage.setItem('calcHistory', JSON.stringify(calcHistory))
+    props.calcHistoryHandler(calcHistory);
+
+    useEffect(() => {
+        const storageData = JSON.parse(localStorage.getItem('calcHistory')) || localStorage.setItem('calcHistory', JSON.stringify({ calcStr: [], calcEval: [] }));
+        setCalcHistory(storageData);
+    }, []);
 
     let btn = () => {
-        let btnArr = []
+        let btnArr = [];
         for (let i = 1; i < 10; i++) {
-            btnArr.push(<input type="button" value={i} key={i}  elementType='num' onClick={(event) => setCalculation(calculationStr + event.target.value)}/>)
-        }
-        return btnArr
+            btnArr.push(<input type="button" value={i} key={i} elementType='num' onClick={(event) => setCalculation(calculationStr + event.target.value)} />)
+        };
+        return btnArr;
     }
 
     const sliceCaclStr = (calcStr) => {
@@ -30,10 +32,10 @@ const CalcButtons = (props) => {
     const cleanCaclStr = () => {
         setCalculation('');
         setBracketCheck(false);
-    }
+    };
 
     const calc = (calcStr) => {
-        setCalculation(eval(calcStr))
+        setCalculation(eval(calcStr));
 
         if (/[+\-*/]/.test(calculationStr)) {
 
@@ -43,9 +45,14 @@ const CalcButtons = (props) => {
                     calcStr: [...prev.calcStr, calcStr],
                     calcEval: [...prev.calcEval, eval(calculationStr)]
                 }
-            })
+            });
+
+            localStorage.setItem('calcHistory', JSON.stringify({
+                calcStr: [...calcHistory.calcStr, calcStr],
+                calcEval: [...calcHistory.calcEval, eval(calculationStr)]
+            }));
+
         }
-        console.log(calcHistory);
     }
 
     const brackets = () => {
@@ -63,28 +70,28 @@ const CalcButtons = (props) => {
     return (
         <div className={styles.calcButtons}>
             <div>
-                <input type="button" value={'()'} onClick={() => brackets()}/>
-                <input type="button" value={'%'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
-                <input type="button" value={'C'} onClick={() => cleanCaclStr()}/>
-                <input type="button" value={'<'} onClick={() => sliceCaclStr(calculationStr)}/>
+                <input type="button" value={'()'} onClick={() => brackets()} />
+                <input type="button" value={'%'} onClick={(event) => setCalculation(calculationStr + event.target.value)} />
+                <input type="button" value={'C'} onClick={() => cleanCaclStr()} />
+                <input type="button" value={'<'} onClick={() => sliceCaclStr(calculationStr)} />
             </div>
 
             <div>
                 <div>
                     {btn()}
-                    <input type="button" value={'0'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
-                    <input type="button" value={'='} onClick={() => calc(calculationStr)}/>
+                    <input type="button" value={'0'} onClick={(event) => setCalculation(calculationStr + event.target.value)} />
+                    <input type="button" value={'='} onClick={() => calc(calculationStr)} />
                 </div>
 
                 <div>
-                    <input type="button" value={'/'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
-                    <input type="button" value={'*'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
-                    <input type="button" value={'-'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
-                    <input type="button" value={'+'} onClick={(event) => setCalculation(calculationStr + event.target.value)}/>
+                    <input type="button" value={'/'} onClick={(event) => setCalculation(calculationStr + event.target.value)} />
+                    <input type="button" value={'*'} onClick={(event) => setCalculation(calculationStr + event.target.value)} />
+                    <input type="button" value={'-'} onClick={(event) => setCalculation(calculationStr + event.target.value)} />
+                    <input type="button" value={'+'} onClick={(event) => setCalculation(calculationStr + event.target.value)} />
                 </div>
             </div>
-            
-            
+
+
         </div>
     )
 }

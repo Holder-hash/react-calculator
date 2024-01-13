@@ -4,7 +4,7 @@
     position: absolute;
     top: 65px;
     right: 70px;
-    width: 500px;
+    width: 300px;
     height: 300px;
     z-index: 1;
     background-color: $body-color-dark1;
@@ -12,6 +12,31 @@
     border-radius: 0 0 15px 15px;
     transition: .3s;
     transform: translateY(-110%);
+    padding: 20px;
+
+    span {
+        font-size: 26px;
+        color: rgb(94, 0, 0); 
+        cursor: pointer;
+    }
+
+    .calc-history__inner {
+        overflow-y: scroll;
+        margin: 0 auto;
+        width: 100%;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+        text-overflow: clip;
+        overflow-wrap: break-word;
+        
+        p {
+            text-wrap: wrap;
+            font-size: 26px;
+            color: $outline-color;
+        }
+
+    }
 }
 
 .calc-history_active {

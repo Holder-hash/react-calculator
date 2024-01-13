@@ -7,16 +7,22 @@ import { useState } from 'react';
 function App() {
 
   const [calcActive, setCalcActive] = useState(false);
+  const [calcHistory, setcalcHistory] = useState({
+    calcStr: [],
+    calcEval: []
+  });
 
   const historyBtnHandler = (historyBtnState) => {
-    return setCalcActive(historyBtnState);
+    setCalcActive(historyBtnState);
   }
 
   return (
     <div className="App">
-      <Header historyBtnHandler={historyBtnHandler}/>
-      <CalcHistory calcActive={calcActive}/>
-      <Calculator />
+
+      <Header historyBtnHandler={historyBtnHandler} />
+      <CalcHistory calcActive={calcActive} calcHistory={calcHistory} setcalcHistory={setcalcHistory} />
+      <Calculator calcHistoryHandler={setcalcHistory} />
+
     </div>
   );
 }
